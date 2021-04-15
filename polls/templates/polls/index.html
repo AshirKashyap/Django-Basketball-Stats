@@ -1,0 +1,12 @@
+<h1> Index! </h1>
+<ul>
+{% for player in players %}
+<li>
+{{player.firstName}}
+{{player.lastName}}
+{{player.jerseyNumber}}
+{{player.team.teamName}}
+</li>
+
+{% endfor %}
+</ul>
