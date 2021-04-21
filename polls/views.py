@@ -18,12 +18,22 @@ def basketballRebounds(request):
 class IndexView(View):
     players = NBAPlayer.objects.all()
 
-    def get(self, request):
+    def get(self, request):  #should change to def post after changing everything else to post
+    # use an if statement to detect data
+    # always use post if there is data, and use get when there is not data
+    # use if 'POST" in request/keys(); for an easy true or false
+    # need to be able to deal with 4 branches
+        #logged in
+        #not logged in
+        #incomming data
+        #no data
+
         context = {
             'players': self.players,
 
         }
         print(context)
+        print(request.GET)
 
         return render(request, 'polls/index.html', context)
 

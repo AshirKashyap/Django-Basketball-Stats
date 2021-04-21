@@ -1,3 +1,4 @@
+{% csrf_token %}
 <h1> Index! </h1>
 <ul>
 {% for player in players %}
@@ -10,3 +11,12 @@
 
 {% endfor %}
 </ul>
+
+
+<form action="" method="GET"> <!-- there is no need to use post here I think -->
+
+  Player First Name: <input type="text" name="firstName"/>
+<input type="submit" value="Submit"/>
+
+
+</form>
