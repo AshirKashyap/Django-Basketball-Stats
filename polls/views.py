@@ -8,15 +8,29 @@ from .models import NBATeam, NBAPlayer, Profile
 
 
 
-def basketballPoints(request):
-    return render(request, 'polls/points.html', {})
+class basketballPoints(View):
+    def get(self, request):
+        return render(request, 'polls/points.html', {})
 
-def basketballRebounds(request):
-    return render(request, 'polls/rebounds.html', {})
+
+class basketballRebounds(View):
+    def get(self, request):
+        return render(request, 'polls/rebounds.html', {})
 
 
 class IndexView(View):
     players = NBAPlayer.objects.all()
+
+    def post(self, request):
+        context = {
+            'players': self.players,
+
+        }
+        print(context)
+        print(request.POST)
+
+        return render(request, 'polls/index.html', context)
+
 
     def get(self, request):  #should change to def post after changing everything else to post
     # use an if statement to detect data

@@ -16,5 +16,10 @@ class NBAPlayer(models.Model):
     jerseyNumber = models.IntegerField(default=0)
     team = models.ForeignKey(NBATeam,
     on_delete = models.CASCADE)
+    totalPoints = models.IntegerField(default=0)
 
 #do migrations every time you edit any models
+
+
+#python manage.py makemigrations
+#python manage.py migrate
