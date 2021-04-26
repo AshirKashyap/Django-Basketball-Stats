@@ -8,47 +8,55 @@ from .models import NBATeam, NBAPlayer, Profile
 
 
 
-class basketballPoints(View):
+class BasketballPoints(View):
+    # The post and get methods automatically seperate the data accordingly
+    def post(self, request):
+        return render(request, 'polls/points.html', {})
+
     def get(self, request):
         return render(request, 'polls/points.html', {})
 
 
-class basketballRebounds(View):
+class BasketballRebounds(View):
+    # The post and get methods automatically seperate the data accordingly
+    def post(self, request):
+        return render(request, 'polls/rebounds.html', {})
+
     def get(self, request):
         return render(request, 'polls/rebounds.html', {})
 
 
 class IndexView(View):
+    # The post and get methods automatically seperate the data accordingly
     players = NBAPlayer.objects.all()
 
     def post(self, request):
-        context = {
-            'players': self.players,
+        if request.method == 'POST':
+            print(request.POST['firstName'])
+            context = {
+                'players': NBAPlayer.objects.all(), #or self.players?!
+                'name': request.POST['firstName'],
+            }
 
-        }
+            print(context)
+            return render(request, 'polls/index.html', context)
+
+
+
         print(context)
         print(request.POST)
-
         return render(request, 'polls/index.html', context)
 
 
-    def get(self, request):  #should change to def post after changing everything else to post
-    # use an if statement to detect data
-    # always use post if there is data, and use get when there is not data
-    # use if 'POST" in request/keys(); for an easy true or false
-    # need to be able to deal with 4 branches
-        #logged in
-        #not logged in
-        #incomming data
-        #no data
 
+
+    def get(self, request):
         context = {
             'players': self.players,
 
         }
         print(context)
         print(request.GET)
-
         return render(request, 'polls/index.html', context)
 
 

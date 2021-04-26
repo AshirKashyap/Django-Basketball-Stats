@@ -11,10 +11,12 @@
 {% endfor %}
 </ul>
 
+{{name}}
 
 <form action="" method="POST"> {% csrf_token %}
-  
+
   Player First Name: <input type="text" name="firstName"/>
+
 <input type="submit" value="Submit"/>
 
 
