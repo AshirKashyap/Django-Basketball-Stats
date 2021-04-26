@@ -34,30 +34,28 @@ class IndexView(View):
         if request.method == 'POST':
             print(request.POST['firstName'])
             context = {
-                'players': NBAPlayer.objects.all(), #or self.players?!
+                'players': self.players,
                 'name': request.POST['firstName'],
             }
 
-            print(context)
-            return render(request, 'polls/index.html', context)
-
-
-
-        print(context)
-        print(request.POST)
         return render(request, 'polls/index.html', context)
+
 
 
 
 
     def get(self, request):
-        context = {
-            'players': self.players,
+        if request.method == 'GET':
+            print(request.GET['firstName'])
+            context = {
+                'players': self.players,
+                'name': request.GET['firstName'],
+            }
 
-        }
-        print(context)
-        print(request.GET)
         return render(request, 'polls/index.html', context)
+
+
+    
 
 
 
