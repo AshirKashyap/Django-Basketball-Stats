@@ -21,7 +21,7 @@ class BasketballPoints(View):
             print(request.POST['totalPoints'])
             context = {
                 'points': self.points,
-                'name': request.POST['totalPoints'],
+                'point': request.POST['totalPoints'],
             }
 
             return render(request, 'polls/points.html', context)

@@ -1,24 +1,20 @@
 <h1> Points! </h1>
 
-<!-- <ul>
-{% for player in players %}
-<li>
-{{player.firstName}}
-{{player.lastName}}
-{{player.jerseyNumber}}
-{{player.team.teamName}}
-</li>
+<ul>
+{% for point in points %}
+
+{{player.totalPoints}}
 
 {% endfor %}
 </ul>
 
-{{name}}
+{{point}}
 
 <form action="" method="POST"> {% csrf_token %}
 
-  Player First Name: <input type="text" name="firstName"/>
+  Points: <input type="text" name="totalPoints"/>
 
 <input type="submit" value="Submit"/>
 
 
-</form> -->
+</form>
