@@ -1,3 +1,5 @@
+<body style="background-color: #FFFFE6">
+
 <h1> Points! </h1>
 
 <ul>
@@ -8,7 +10,12 @@
 {% endfor %}
 </ul>
 
+<h3 style="color:blue;">
+
 {{point}}
+
+</h3>
+
 
 <form action="" method="POST"> {% csrf_token %}
 
@@ -18,3 +25,5 @@
 
 
 </form>
+
+</body>

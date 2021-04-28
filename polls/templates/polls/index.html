@@ -1,4 +1,7 @@
+<body style="background-color: #FFFFE6">
+
 <h1> Index! </h1>
+
 <ul>
 {% for player in players %}
 <li>
@@ -11,7 +14,12 @@
 {% endfor %}
 </ul>
 
+<h3 style="color:blue;">
+
 {{name}}
+
+</h3>
+
 
 <form action="" method="POST"> {% csrf_token %}
 
@@ -21,3 +29,5 @@
 
 
 </form>
+
+</body>
