@@ -1,1 +1,20 @@
 <h1> Rebounds! </h1>
+
+<ul>
+{% for rebound in rebounds %}
+
+{{player.totalRebounds}}
+
+{% endfor %}
+</ul>
+
+{{rebound}}
+
+<form action="" method="POST"> {% csrf_token %}
+
+  Rebounds: <input type="text" name="totalRebounds"/>
+
+<input type="submit" value="Submit"/>
+
+
+</form>

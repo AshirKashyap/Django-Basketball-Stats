@@ -10,11 +10,7 @@ from .models import NBATeam, NBAPlayer, Profile
 
 class BasketballPoints(View):
     # The post and get methods automatically seperate the data accordingly\
-
     points = NBAPlayer.objects.all()
-
-    # def post(self, request):
-    #     return render(request, 'polls/points.html', {})
 
     def post(self, request):
         if request.method == 'POST':
@@ -27,16 +23,43 @@ class BasketballPoints(View):
             return render(request, 'polls/points.html', context)
 
     def get(self, request):
-        return render(request, 'polls/points.html', {})
+        if request.method == 'GET':
+            print(request.GET.get('totalPoints'))
+            context = {
+                'points': self.points,
+                # never printing points through get function
+            }
+
+            return render(request, 'polls/points.html', context)
+
 
 
 class BasketballRebounds(View):
     # The post and get methods automatically seperate the data accordingly
+
+    rebounds = NBAPlayer.objects.all()
+
     def post(self, request):
-        return render(request, 'polls/rebounds.html', {})
+        if request.method == 'POST':
+            print(request.POST['totalRebounds'])
+            context = {
+                'rebounds': self.rebounds,
+                'rebound': request.POST['totalRebounds'],
+            }
+
+            return render(request, 'polls/rebounds.html', context)
+
 
     def get(self, request):
-        return render(request, 'polls/rebounds.html', {})
+        if request.method == 'GET':
+            print(request.GET.get('totalRebounds'))
+            context = {
+                'rebounds': self.rebounds,
+                # never printing the rebounds from the get function
+            }
+
+            return render(request, 'polls/rebounds.html', context)
+
 
 
 class IndexView(View):
@@ -59,7 +82,7 @@ class IndexView(View):
              print(request.GET.get('firstName'))
              context = {
                 'players': self.players,
-                'name': request.GET.get('firstName')
+                #never printing name from get function
              }
 
              return render(request, 'polls/index.html', context)
