@@ -7,6 +7,30 @@ from django.contrib.auth import authenticate, login, logout
 
 from .models import NBATeam, NBAPlayer, Profile
 
+class BaseView(View):
+    points = NBAPlayer.objects.all()
+
+    def post(self, request):
+        if request.method == 'POST':
+            print(request.POST['totalPoints'])
+            context = {
+                'points': self.points,
+                'point': request.POST['totalPoints'],
+            }
+
+            return render(request, 'polls/points.html', context)
+
+    def get(self, request):
+        if request.method == 'GET':
+            print(request.GET.get('totalPoints'))
+            context = {
+                'points': self.points,
+                # never printing points through get function
+            }
+
+            return render(request, 'polls/base.html', context)
+
+
 class Login(View):
     def post(self, request):
         if 'inputUsername' in request.POST.keys():
