@@ -127,3 +127,8 @@ CRISPY_TEMPLATE_PACK="bootstrap4"
 LOGIN_REDIRECT_URL = "/polls/base"
 
 LOGOUT_REDIRECT_URL = "/polls/base"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    '/var/www/static/',
+]
