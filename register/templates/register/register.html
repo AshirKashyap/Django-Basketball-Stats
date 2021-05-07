@@ -1,4 +1,5 @@
 {% extends 'polls/base.html' %}
+<!-- Taking the styling from the base.html template -->
 
 {% block title %}
 Create an Account
@@ -11,4 +12,6 @@ Create an Account
      {{form|crispy}} <!-- filter to make the form look better -->
     <button type="submit" class="btn btn-success btn-lg">Register</button>
   </form>
+
+  <!-- This is another simple form to register/create a user -->
 {% endblock %}

@@ -1,4 +1,5 @@
 {% extends 'polls/base.html' %}
+<!-- Taking the styling from the base.html template -->
 
 {% block title %}
 Login here
@@ -12,7 +13,9 @@ Login here
     {{form|crispy}}
 
     <p>Don't have an account? Create one <a href="/register">here</a></p>
+    <!-- If the user wants to make an account it links to the register page -->
     <button type="submit" class="btn btn-success btn-lg">Login</button>
 
   </form>
+  <!-- This is just a simple form for the login -->
 {% endblock %}
