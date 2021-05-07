@@ -39,7 +39,7 @@
 <body>
   <div class="sidenav">
     <a href="../polls/base">HOME</a>
-    <a href="./login">LOGIN</a>
+    <a href="../login/">LOGIN</a>
     <a href="../register/">REGISTER</a>
     <a href="../polls/points">POINTS</a>
     <a href="../polls/rebounds">REBOUNDS</a>
@@ -47,9 +47,20 @@
   </div>
 
   <div id="content", name="content", class="main">
-    {% block content %}
-    BASE TEMPLATE
-    {% endblock %}
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h1 class="mt-2">My Website</ht>
+        <hr class="mt-0 mb-4">
+        {% if user.is_authenticated %}
+          {% block content %}
+          BASE TEMPLATE
+          IF LOGGING IN YOU CAN SEE THIS
+          {% endblock %}
+        {% else %}
+          <p>YOU ARE NOT LOGGED IN: Login<a href="/register/">Here</a></p>
+        {% endif %}
+      </div>
+    </div>
   </div>
 
 </body>
