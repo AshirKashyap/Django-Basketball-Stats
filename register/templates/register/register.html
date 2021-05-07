@@ -9,6 +9,6 @@ Create an Account
   <form method="POST" class="form-group">
     {% csrf_token %}
      {{form|crispy}} <!-- filter to make the form look better -->
-    <button type="submit" class="btn btn-success">Register</button>
+    <button type="submit" class="btn btn-success btn-lg">Register</button>
   </form>
 {% endblock %}

@@ -30,6 +30,7 @@
     .main {
       margin-left:160px;
       padding: 0px 10px;
+      font-size: 30px;
     }
 
   </style>
@@ -53,10 +54,14 @@
     <a href="../polls/">INDEX</a>
   </div>
 
+  <p>
+    <img src="NBA Logo.png" height="350" width="350" />
+  </p>
+
   <div id="content", name="content", class="main">
     <div class="row justify-content-center">
       <div class="col-8">
-        <h1 class="mt-2">My Website</ht>
+        <h1 class="mt-2">My Website</h1>
         <hr class="mt-0 mb-4">
         {% if user.is_authenticated %}
           {% block content %}
