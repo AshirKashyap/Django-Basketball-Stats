@@ -11,7 +11,7 @@ class BaseView(View):
     points = NBAPlayer.objects.all()
 
     def post(self, request):
-        if request.method == 'POST':
+        if 'totalPoints' in request.POST.keys():
             print(request.POST['totalPoints'])
             context = {
                 'points': self.points,
@@ -19,6 +19,13 @@ class BaseView(View):
             }
 
             return render(request, 'polls/points.html', context)
+
+        else:
+            return HttpResponse("hi")
+            #add authentication here
+
+
+
 
     def get(self, request):
         if request.method == 'GET':
