@@ -46,7 +46,7 @@
   <title>{% block title %}Ashir's Website{% endblock %}</title>
 </head>
 
-<body>
+<body style="background-color: #FFFFE6">
   <div class="sidenav">
     <a href="../polls/base">HOME</a>
     <a href="../login/">LOGIN</a>
@@ -69,11 +69,16 @@
         <hr class="mt-0 mb-4">
         {% if user.is_authenticated %}
           {% block content %}
-          BASE TEMPLATE
-          IF LOGGING IN YOU CAN SEE THIS
+          Welcome to my website! This website is all about basketball statistics.
+           If you wish to search up the points or rebounds from your favorite
+           basketball players head down to the points, rebounds, and index pages!
           {% endblock %}
         {% else %}
-          <p>YOU ARE NOT LOGGED IN: Login<a href="/register/">Here</a></p>
+          {% block content2 %}
+           <hr/>
+           <p>You are not registered: Register <a href="../register/">Here</a></p>
+          {% endblock %}
+
         {% endif %}
       </div>
     </div>

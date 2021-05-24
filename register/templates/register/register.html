@@ -1,17 +1,86 @@
-{% extends 'polls/base.html' %}
-<!-- Taking the styling from the base.html template -->
+<!doctype html>
+<html> <!-- Cannot extend base.html otherwise a user that is logged out cannot access the register.html page -->
+<head>
+  <style type="text/css">
+    .sidenav {
+      height:100%;
+      width:160px;
+      position: fixed;
+      z-index:1;
+      top:0;
+      left:0;
+      background-color:#111;
+      overflow-x: :hidden;
+      padding-top:20px;
+    }
 
-{% block title %}
-Create an Account
-{% endblock %}
-{% load crispy_forms_tags %}
+    .sidenav a {
+      padding:6px 8px 6px 16px;
+      text-decoration: none;
+      font-size:25px;
+      color: #818181;
+      display:block;
+    }
 
-{% block content %}
-  <form method="POST" action="../register/" class="form-group">
-    {% csrf_token %}
-     {{form|crispy}} <!-- filter to make the form look better -->
-    <button type="submit" class="btn btn-success btn-lg">Register</button>
-  </form>
+    .sidenav a:hover {
+      color:#f1f1f1;
 
-  <!-- This is another simple form to register/create a user -->
-{% endblock %}
+    }
+
+    .main {
+      margin-left:160px;
+      padding: 0px 10px;
+      font-size: 30px;
+    }
+
+  </style>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Adding boostrap in -->
+
+</head>
+
+<body style="background-color: #FFFFE6">
+  <div class="sidenav">
+    <a href="../polls/base">HOME</a>
+    <a href="../login/">LOGIN</a>
+    <a href="../register/">REGISTER</a>
+    <a href="../polls/points">POINTS</a>
+    <a href="../polls/rebounds">REBOUNDS</a>
+    <a href="../polls/">INDEX</a>
+  </div>
+
+  <!-- Links to different parts of my website on the side bar -->
+
+  {% load static %} <img class="main" height="125" width="170" src="{% static "/mysite/NBA Logo.png" %}" alt="logo" />
+
+  <!-- Loading in an image of an NBA logo -->
+
+  <div id="content", name="content", class="main">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h1 class="mt-2">My Website</h1>
+        <hr class="mt-0 mb-4">
+          {% block title %}
+          Create an Account
+          {% endblock %}
+          {% load crispy_forms_tags %}
+
+          {% block content %}
+            <form method="POST" action="../register/" class="form-group" class="main">
+              {% csrf_token %}
+               {{form|crispy}} <!-- filter to make the form look better -->
+              <button type="submit" class="btn btn-success btn-lg">Register</button>
+            </form>
+
+            <!-- This is another simple form to register/create a user -->
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>
