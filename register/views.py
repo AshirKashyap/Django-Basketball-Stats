@@ -6,6 +6,8 @@ from .forms import RegisterForm
 def register(response):
     if response.method == "POST":
         form = RegisterForm(response.POST)
+        print("REGISTRATION WHOOO")
+
         if form.is_valid():
             form.save() #save a user in the user's database
 

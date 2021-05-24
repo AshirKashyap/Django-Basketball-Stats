@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import NBATeam, NBAPlayer, Profile
 
 class BaseView(View):
+    template_name = "./polls/base.html"
     points = NBAPlayer.objects.all()
 
     def post(self, request):
@@ -21,7 +22,7 @@ class BaseView(View):
             return render(request, 'polls/points.html', context)
 
         else:
-            return HttpResponse("hi")
+            return render(request, 'polls/point.html', context)
             #add authentication here
 
 

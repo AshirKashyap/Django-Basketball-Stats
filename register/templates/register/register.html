@@ -1,13 +1,13 @@
-
+{% extends 'polls/base.html' %}
 <!-- Taking the styling from the base.html template -->
- 
+
 {% block title %}
 Create an Account
 {% endblock %}
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <form method="POST" action="../polls/base" class="form-group">
+  <form method="POST" action="../register/" class="form-group">
     {% csrf_token %}
      {{form|crispy}} <!-- filter to make the form look better -->
     <button type="submit" class="btn btn-success btn-lg">Register</button>

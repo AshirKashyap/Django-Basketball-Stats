@@ -6,8 +6,6 @@ Login here
 {% endblock %}
 
 {% load crispy_forms_tags %}
-
-{% if user.is_authenticated%}
 {% block content %}
   <form method="post" class="form-group">
     {% csrf_token %}
@@ -20,9 +18,3 @@ Login here
   </form>
   <!-- This is just a simple form for the login -->
 {% endblock %}
-{% else %}
-
-{% block content %}
-  <button type="submit" class="btn btn-success"
-{% endblock %}
-{% endif %}
