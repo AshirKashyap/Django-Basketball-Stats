@@ -4,8 +4,11 @@
 {% block title %}
 Login here
 {% endblock %}
+<!-- Adding a title of "Login here" -->
 
 {% load crispy_forms_tags %}
+<!-- loading crispy forms which makes the templates look a little better -->
+
 {% block content %}
   <form method="post" class="form-group">
     {% csrf_token %}

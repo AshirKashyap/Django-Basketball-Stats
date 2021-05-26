@@ -4,11 +4,15 @@ from django.http import Http404
 from django.views import View
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+# Importing the User model as well as some other important things
 
 from .models import NBATeam, NBAPlayer, Profile
+# Importing the models
 
 class BaseView(View):
-    template_name = "./polls/base.html"
+    # Purpose: This function works to display the base.html template and its data
+    # Parameters: The only parameter is View which is a built in view model from django
+    # Return: There is a return that renders base.html (in other words loads that page)
     points = NBAPlayer.objects.all()
 
     def post(self, request):
@@ -22,11 +26,7 @@ class BaseView(View):
             return render(request, 'polls/points.html', context)
 
         else:
-            return render(request, 'polls/point.html', context)
-            #add authentication here
-
-
-
+            return render(request, 'polls/points.html', context)
 
     def get(self, request):
         if request.method == 'GET':
@@ -38,50 +38,12 @@ class BaseView(View):
 
             return render(request, 'polls/base.html', context)
 
-
-class Login(View):
-    def post(self, request):
-        if 'inputUsername' in request.POST.keys():
-            # IF so, try to authentircate
-            user = authenticate(username=request.POST['inputUsername'],
-                password=request.POST['inputPassword'])
-            if user is not None:
-                # IF success, then use the login function so the session persists.
-                login(request, user)
-            else:
-                pass
-                # Message for failed login.
-        # This tests if the form is the log *out* form
-        elif 'logout' in request.POST.keys():
-            # If so, don't need to check anything else, just kill the session.
-            logout(request)
-        # After we check the forms, set a flag for use in the template.
-        if request.user.is_authenticated:
-            loggedIn = True
-        else:
-            loggedIn = False
-        # Find the template
-        template = loader.get_template('posts/index.html')
-
-        # The home page will show *all* posts for now.
-        allPosts = Post.objects.order_by('-pubDate')
-        # The Post model only contains the username, so we go and fetch the
-        # first and last names from the User model and add that information.
-        for post in allPosts:
-            poster = post.userPosted
-            post.firstName = poster.first_name
-            post.lastName = poster.last_name
-        # Now all the data is ready to pass to the template so set up the context.
-        context = {
-            'allPosts': allPosts,
-            'loggedIn': loggedIn,
-            'user': request.user,
-            }
-        # And go!
-        return render(template.render(context, request))
-
 class BasketballPoints(View):
-    # The post and get methods automatically seperate the data accordingly\
+    # Purpose: This function works to display the points.html template and its data
+    # Parameters: The only parameter is View which is a built in view model from django
+    # Return: There is a return that renders points.html (in other words loads that page)
+
+    # The post and get methods automatically seperate the data accordingly
     points = NBAPlayer.objects.all()
 
     def post(self, request):
@@ -107,6 +69,10 @@ class BasketballPoints(View):
 
 
 class BasketballRebounds(View):
+    # Purpose: This function works to display the rebounds.html template and its data
+    # Parameters: The only parameter is View which is a built in view model from django
+    # Return: There is a return that renders rebounds.html (in other words loads that page)
+
     # The post and get methods automatically seperate the data accordingly
 
     rebounds = NBAPlayer.objects.all()
@@ -135,6 +101,10 @@ class BasketballRebounds(View):
 
 
 class IndexView(View):
+    # Purpose: This function works to display the index.html template and its data
+    # Parameters: The only parameter is View which is a built in view model from django
+    # Return: There is a return that renders index.html (in other words loads that page)
+
     # The post and get methods automatically seperate the data accordingly
     players = NBAPlayer.objects.all()
 
