@@ -2,9 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class NBATeam(models.Model):
-    teamName = models.CharField(max_length=70, default="")
-    city = models.CharField(max_length=50, default="")
-    mascot = models.CharField(max_length=50, default="")
+    teamName = models.CharField(max_length=70, default="", null=True)
+    city = models.CharField(max_length=50, default="", null=True)
+    mascot = models.CharField(max_length=50, default="",null=True)
 
 class Profile(models.Model):
     favTeam = models.ForeignKey(NBATeam,

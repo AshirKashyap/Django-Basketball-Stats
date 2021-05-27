@@ -14,30 +14,38 @@ Index
 
 <h1> Index! </h1>
 
-<ul>
-{% for player in players %}
-<li>
-{{player.firstName}}
-{{player.lastName}}
-{{player.jerseyNumber}}
-{{player.team.teamName}}
-</li>
 
-{% endfor %}
-</ul>
+
+
 
 <!-- A for loop to loop through the players and display their name, jersey number, and team name -->
 
 <h4 style="color:blue;">
 
-{{name}}
+{{selectedPlayer.totalRebounds}}
 
 </h4>
 
 
 <form action="" method="POST"> {% csrf_token %}
+    <label for="players">Choose a player:</label>
 
-  Player First Name: <input type="text" name="firstName"/>
+  <!-- Player First Name: <input type="text" name="firstName"/> -->
+
+    <select name="firstName" id="players">
+
+      {% for player in players %}
+        <option>
+          {{player.firstName}}
+          {{player.lastName}}
+        </option>
+
+      {% endfor %}
+
+
+    </select>
+
+
 
 <input type="submit" value="Submit"/>
 

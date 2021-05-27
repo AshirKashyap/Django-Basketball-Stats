@@ -36,17 +36,21 @@ class BaseView(View):
             'points': self.points,
             # never printing points through get function
         }
-        # f = open("data.txt", "r")
-        #
-        #
+        f = open("data.txt", "r")
+
+
         # for line in f:
         #     strSpl = line.split(",")
-        #     rebounds = float(strSpl[23])
-        #     ppg = float(strSpl[29])
+        #     fname = strSpl[0]
+        #     lname = strSpl[1]
+        #     team = strSpl[4]
+        #     rebounds = float(strSpl[25])
+        #     ppg = float(strSpl[31])
         #
-        #     newPlayer = NBAPlayer(totalRebounds = rebounds, totalPoints = ppg)
-        #
+        #     newPlayer = NBAPlayer(totalRebounds = rebounds, totalPoints = ppg, firstName = fname, lastName = lname)
+        #     # newPlayer = NBATeam(teamName = team)
         #     newPlayer.save()
+        #
         #
         #
         # f.close()
@@ -126,20 +130,34 @@ class IndexView(View):
     # The post and get methods automatically seperate the data accordingly
     players = NBAPlayer.objects.all()
 
+
     def post(self, request):
+
         if request.method == 'POST':
-            print(request.POST['firstName'])
+            # print(request.POST['firstName'])
+
+
+
+
+            for player in self.players:
+                if str(player.firstName) + " " + str(player.lastName) == str(request.POST['firstName']):
+                    selectedPlayer = player
+
             context = {
                 'players': self.players,
-                'name': request.POST['firstName'],
+                # 'name': request.POST['firstName'],
+                'selectedPlayer': selectedPlayer,
+
+
             }
 
+            print(request.POST)
             return render(request, 'polls/index.html', context)
 
 
     def get(self, request):
          if request.method == 'GET':
-             print(request.GET.get('firstName'))
+             # print(request.GET.get('firstName'))
              context = {
                 'players': self.players,
                 #never printing name from get function
