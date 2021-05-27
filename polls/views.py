@@ -36,20 +36,23 @@ class BaseView(View):
             'points': self.points,
             # never printing points through get function
         }
-        f = open("data.txt", "r")
+        # f = open("data.txt", "r")
+        #
+        #
+        # for line in f:
+        #     strSpl = line.split(",")
+        #     rebounds = float(strSpl[23])
+        #     ppg = float(strSpl[29])
+        #
+        #     newPlayer = NBAPlayer(totalRebounds = rebounds, totalPoints = ppg)
+        #
+        #     newPlayer.save()
+        #
+        #
+        # f.close()
 
-
-        for line in f:
-            strSpl = line.split(",")
-            rebounds = float(strSpl[23])
-            ppg = float(strSpl[29])
-
-            newPlayer = NBAPlayer(totalRebounds = rebounds, totalPoints = ppg)
-
-            newPlayer.save()
-
-
-        f.close()
+        # This code reads in data from the data.txt file and seperates it using split
+        # While looping through each line of data, it creates a new player with the appropriate data
 
         return render(request, 'polls/base.html', context)
 
