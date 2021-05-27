@@ -14,6 +14,7 @@ class BaseView(View):
     # Parameters: The only parameter is View which is a built in view model from django
     # Return: There is a return that renders base.html (in other words loads that page)
     points = NBAPlayer.objects.all()
+    print(points)
 
     def post(self, request):
         if 'totalPoints' in request.POST.keys():
@@ -23,20 +24,34 @@ class BaseView(View):
                 'point': request.POST['totalPoints'],
             }
 
+            print(totalPoints)
             return render(request, 'polls/points.html', context)
 
         else:
             return render(request, 'polls/points.html', context)
 
     def get(self, request):
-        if request.method == 'GET':
-            print(request.GET.get('totalPoints'))
-            context = {
-                'points': self.points,
-                # never printing points through get function
-            }
+        # print(request.GET.get('totalPoints'))
+        context = {
+            'points': self.points,
+            # never printing points through get function
+        }
+        f = open("data.txt", "r")
 
-            return render(request, 'polls/base.html', context)
+
+        for line in f:
+            strSpl = line.split(",")
+            rebounds = float(strSpl[23])
+            ppg = float(strSpl[29])
+
+            newPlayer = NBAPlayer(totalRebounds = rebounds, totalPoints = ppg)
+
+            newPlayer.save()
+
+
+        f.close()
+
+        return render(request, 'polls/base.html', context)
 
 class BasketballPoints(View):
     # Purpose: This function works to display the points.html template and its data
