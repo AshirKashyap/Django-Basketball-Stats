@@ -38,34 +38,29 @@ class BaseView(View):
         }
         f = open("data.txt", "r")
 
-
-        for line in f:
-            strSpl = line.split(",")
-            fname = strSpl[0]
-            lname = strSpl[1]
-            team = strSpl[4]
-            gamesPlayed = int(strSpl[7])
-            twoPointPer = float(strSpl[18]) * 100
-            threePointPer = float(strSpl[15]) * 100
-            rebounds = float(strSpl[25])
-            ppg = float(strSpl[31])
-
-            print(fname)
-            print(lname)
-            print(team)
-            print(gamesPlayed)
-            print(twoPointPer)
-            print(threePointPer)
-            print(rebounds)
-            print(ppg)
-
-            newPlayer = NBAPlayer(totalRebounds = rebounds, totalPoints = ppg, firstName = fname, lastName = lname)
-            newPlayer = NBATeam(teamName = team)
-            newPlayer.save()
-
-
-
-        f.close()
+        #
+        # for line in f:
+        #     strSpl = line.split(",")
+        #     fname = strSpl[0]
+        #     lname = strSpl[1]
+        #     team = strSpl[4]
+        #     gamesPlayed = int(strSpl[7])
+        #     twoPointPer = float(strSpl[18]) * 100
+        #     threePointPer = float(strSpl[15]) * 100
+        #     rebounds = float(strSpl[25])
+        #     ppg = float(strSpl[31])
+        #
+        #
+        #
+        #     newPlayer = NBAPlayer(totalRebounds = rebounds, totalPoints = ppg, firstName = fname, lastName = lname)
+        #     newPlayer = NBATeam(teamName = team)
+        #     newPlayer = NBAPlayer2(gamesPlayed = gamesPlayed, twoPointPer = twoPointPer, threePointPer = threePointPer)
+        #     newPlayer.save()
+        #
+        #
+        #
+        #
+        # f.close()
 
         # This code reads in data from the data.txt file and seperates it using split
         # While looping through each line of data, it creates a new player with the appropriate data
