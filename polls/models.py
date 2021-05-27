@@ -16,13 +16,16 @@ class NBAPlayer(models.Model):
     team = models.ForeignKey(NBATeam,
     on_delete = models.CASCADE, null=True)
     totalPoints = models.FloatField(default=0.0, null=True)
-    # pointsPerGame = models.FloatField(default=0.0, null=True)
     totalRebounds = models.FloatField(default=0.0, null=True)
-    # gamesPlayed = models.IntegerField(default=0, null=True)
-    # twoPointPer = models.FloatField(default=0.0, null=True)
-    # threePointPer = models.FloatField(default=0.0, null=True)
 
+    # Since I am unable to edit this model for reference the totalPoints stand for points per game and
+    # the totalRebounds stands for rebounds per game
 
+class NBAPlayer2(models.Model):
+    player = models.OneToOneField(NBAPlayer, on_delete=models.CASCADE, null=True)
+    gamesPlayed = models.IntegerField(default=0, null=True)
+    twoPointPer = models.FloatField(default=0.0, null=True)
+    threePointPer = models.FloatField(default=0.0, null=True)
 
 
 
