@@ -2,9 +2,9 @@
 <!-- Taking the styling from the base.html template -->
 
 {% block title %}
-Index
+Find your favorite player's stats!
 {% endblock %}
-<!-- Adding a title of "Index" -->
+<!-- Adding a title of "Find your favorite player's stats" -->
 
 {% load crispy_forms_tags %}
 <!-- loading crispy forms which makes the templates look a little better -->
@@ -12,60 +12,53 @@ Index
 
 <body style="background-color: #FFFFE6">
 
-<h1> Index! </h1>
+<h2> Find your favorite player's stats!! </h2>
 
 
+<!-- Displaying the user's chosen player's stats -->
+<!-- These stats include the points per game, rebounds per game, 2 pt %, 3 pt %, and games played -->
 
-
-
-<!-- A for loop to loop through the players and display their name, jersey number, and team name -->
-
-<h4 style="color:blue;">
+<h4 style="color:purple;">
+<!-- Setting the color of the displayed text -->
 
 Points Per Game: {{selectedPlayer.totalPoints}}
-<br/>
+<hr/>
 Rebounds Per Game: {{selectedPlayer.totalRebounds}}
-<br/>
+<hr/>
+
+<!-- Selected player refers to the normal NBAPlayer -->
 
 2 Point Percentage: {{addedFields.twoPointPer}}
-<br/>
+<hr/>
 3 Point Percentage: {{addedFields.threePointPer}}
-<br/>
+<hr/>
 Games Played: {{addedFields.gamesPlayed}}
-<br/>
+<hr/>
 
-
-
+<!-- Added Fields refers to the NBAPlayer2 model as a work around to not
+being about to edit the NBAPlayer model -->
 
 </h4>
 
-
 <form action="" method="POST"> {% csrf_token %}
     <label for="players">Choose a player:</label>
-
-  <!-- Player First Name: <input type="text" name="firstName"/> -->
-
     <select name="firstName" id="players">
 
       {% for player in players %}
+      <!-- A for loop to loop through all the players -->
         <option>
           {{player.firstName}}
           {{player.lastName}}
         </option>
 
       {% endfor %}
-
-
     </select>
-
-
 
 <input type="submit" value="Submit"/>
 
-
 </form>
 
-<!-- Another form to take in a player's name and display it onto the screen -->
+<!-- Another form to display the 15 players by their first and last name in a drop down -->
 
 </body>
 

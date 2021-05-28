@@ -2,7 +2,7 @@
 <html>
 <head>
   <style type="text/css">
-  /* This base.html file is a base template that is applied to index.html, points.html, rebounds.html, and login.html */
+  /* This base.html file is a base template that is applied to index.html and login.html */
   /* The styling for the side bar, the side bar links, and the main stuff */
     .sidenav {
       height:100%;
@@ -53,8 +53,6 @@
     <a href="../login/">LOGIN</a>
     <a href="../logout">LOGOUT</a>
     <a href="../register/">REGISTER</a>
-    <a href="../polls/points">POINTS</a>
-    <a href="../polls/rebounds">REBOUNDS</a>
     <a href="../polls/">INDEX</a>
   </div>
 
@@ -83,8 +81,11 @@
            <hr/>
            <p>You are not registered: Register <a href="../register/">Here</a></p>
           {% endblock %}
+        <!-- If the user is autheticated, they can see the whole wesbite -->
+        <!-- However, if they aren't their view is restricted to just the home
+        page and register page until they register/login -->
 
-        {% endif %} 
+        {% endif %}
       </div>
     </div>
   </div>
