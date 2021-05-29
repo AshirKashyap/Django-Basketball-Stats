@@ -18,7 +18,7 @@ to register. When a user is not logged in/registered, they can only see the home
 (base.html and register.html), however, after a user logins or registers, they have complete access to the whole website!
 
 
-3. Lastly, I worked on the function of index.hmtl which allowed the user to choose from a variety of 15 players
+3. Lastly, I worked on the function of index.html which allowed the user to choose from a variety of 15 players
 and displayed that player's stats (in the form of points per game, rebounds per game, 2 pt%, 3 pt%, and games played). 
 To do this, I used basketball-reference.com and exported the data as a CSV. I put all this data into "data.txt" and then used 
 code in my view to read in this file. From there, I set the points, rebounds, etc. This allowed me to create NBAPlayer objects by 
